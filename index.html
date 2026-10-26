@@ -222,6 +222,120 @@ footer a:hover{color:var(--gold)}
 .hero-copy>*:nth-child(2){animation-delay:.08s}.hero-copy>*:nth-child(3){animation-delay:.16s}.hero-copy>*:nth-child(4){animation-delay:.24s}.hero-copy>*:nth-child(5){animation-delay:.32s}
 .hero-photo .outline path{stroke-dasharray:900;animation:draw 2.2s .3s var(--ease) both}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+/* avaliações */
+.reviews{background:var(--night-2);border-top:1px solid var(--night-3)}
+.stars{display:flex;gap:3px;color:var(--gold)}
+.stars svg{width:16px;height:16px}
+.sec-head>.rev-sum{display:flex;flex-direction:row;align-items:center;gap:16px}
+.rev-sum .big{font-family:var(--display);font-size:64px;font-weight:600;line-height:.9;color:var(--pearl)}
+.rev-sum .stars svg{width:20px;height:20px}
+.rev-sum small{display:block;color:var(--mist);font-size:12.5px;margin-top:6px;max-width:22ch}
+.rev-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{margin:0;background:var(--night);border:1px solid var(--night-3);padding:28px 26px 24px;display:flex;flex-direction:column;gap:18px;min-width:0;position:relative;transition:border-color .35s,transform .45s var(--ease)}
+.rev:hover{border-color:rgba(233,165,28,.5);transform:translateY(-4px)}
+.rev::before{content:"\201C";position:absolute;top:6px;right:20px;font-family:var(--display);font-size:90px;line-height:1;color:var(--gold);opacity:.18}
+.rev blockquote{margin:0;font-size:14.5px;line-height:1.7;color:var(--pearl)}
+.rev .rep{border-left:2px solid var(--gold);padding:2px 0 2px 14px;font-size:13px;color:var(--mist)}
+.rev .rep b{display:block;font-family:var(--display);font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:11.5px;color:var(--gold);margin-bottom:2px}
+.rev figcaption{margin-top:auto;display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--night-3)}
+.rev .av{width:40px;height:40px;flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:16px;color:var(--night);background:var(--gold);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.rev figcaption b{display:block;font-weight:500;font-size:14.5px}
+.rev figcaption small{color:var(--mist);font-size:12px}
+.rev-cta{margin-top:36px;border:1px solid rgba(233,165,28,.4);padding:30px 32px;display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between;background:linear-gradient(120deg,rgba(233,165,28,.08),transparent 60%)}
+.rev-cta>div:first-child{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 300px}
+.rev-cta h3{font-size:32px;text-transform:uppercase;font-weight:500}
+.rev-cta p{color:var(--mist);font-size:14px;max-width:48ch}
+.rev-cta .btns{flex:0 1 auto}
+.btn svg.s{width:18px;height:18px}
+@media (max-width:1000px){.rev-row{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){
+  .rev-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:calc(-1*max(20px,env(safe-area-inset-right,0px)));padding-right:max(20px,env(safe-area-inset-right,0px));scrollbar-width:none}
+  .rev-row::-webkit-scrollbar{display:none}
+  .rev{flex:0 0 84%;scroll-snap-align:start;padding:24px 20px 20px}
+  .rev-cta{padding:24px 20px}
+  .rev-cta .btns{width:100%}
+}
+.swipe-hint{display:none;margin-top:12px;font-size:12px;color:var(--mist);letter-spacing:.04em}
+@media (max-width:640px){.swipe-hint{display:block}}
+/* ===== animações ===== */
+html,body{overflow-x:hidden;max-width:100%}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+main,section,footer,.ribbon,.marquee{overflow-x:clip;max-width:100vw}
+header{transition:background .35s,box-shadow .35s}
+header.scrolled{background:rgba(15,21,28,.97);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.nav{transition:height .35s var(--ease)}
+header.scrolled .nav{height:60px}
+
+/* revelar ao rolar (só fica escondido se o JS ativar) */
+.js-anim .rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.js-anim .rv.rv-l,.js-anim .rv.rv-r{transform:translateY(40px) scale(.96)}
+.js-anim .rv.rv-s{transform:scale(.92)}
+.js-anim .rv.in{opacity:1;transform:none}
+.js-anim .wipe{clip-path:inset(100% 0 0 0);transition:clip-path 1.2s var(--ease);transition-delay:var(--d,0s)}
+.js-anim .wipe.in{clip-path:inset(0 0 0 0)}
+.js-anim .wipe img{transform:scale(1.18);transition:transform 1.6s var(--ease)}
+.js-anim .wipe.in img{transform:scale(1)}
+
+/* hero */
+@keyframes kb{from{transform:scale(1.14)}to{transform:scale(1)}}
+.hero-photo .frame img{animation:kb 2.4s var(--ease) both}
+@keyframes tagIn{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+.hero-photo .tag{animation:tagIn 1s 1s var(--ease) both}
+@keyframes shine{0%{background-position:-120% 0}60%,100%{background-position:220% 0}}
+.hero h1 .g{background:linear-gradient(100deg,var(--gold) 0%,var(--gold) 40%,#FFE7A8 50%,var(--gold) 60%,var(--gold) 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4.5s 1.2s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-photo .outline{animation:floaty 6s 2.5s ease-in-out infinite}
+.eyebrow::before{transform-origin:left;transition:transform .9s var(--ease)}
+.js-anim .rv .eyebrow::before,.js-anim .eyebrow.rv::before{transform:scaleX(0)}
+.js-anim .rv.in .eyebrow::before,.js-anim .eyebrow.rv.in::before{transform:scaleX(1);transition-delay:.3s}
+
+/* faixa rolando */
+.marquee{overflow:hidden;border-bottom:1px solid var(--night-3);background:var(--night);padding-block:22px}
+.marquee .track{display:flex;width:max-content;animation:mq 34s linear infinite}
+.marquee span{font-family:var(--display);font-weight:500;font-size:clamp(26px,4vw,40px);text-transform:uppercase;letter-spacing:.06em;color:transparent;-webkit-text-stroke:1px rgba(228,226,221,.35);display:inline-flex;align-items:center;gap:34px;padding-right:34px;white-space:nowrap}
+.marquee span b{color:var(--gold);-webkit-text-stroke:0;font-weight:500}
+.marquee svg{width:16px;height:18px;color:var(--gold);flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+.marquee:hover .track{animation-play-state:paused}
+
+/* botões com brilho */
+.btn-gold{position:relative;overflow:hidden}
+.btn-gold::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:btnShine 3.6s ease-in-out infinite}
+@keyframes btnShine{0%,70%{left:-60%}100%{left:130%}}
+
+/* serviços */
+.svc::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.svc:hover::after{transform:scaleX(1)}
+.svc .ic{transition:transform .6s var(--ease)}
+.svc:hover .ic{transform:translateY(-4px) rotate(-8deg)}
+.svc h3{transition:color .3s}
+.svc:hover h3{color:var(--gold)}
+
+/* portfólio */
+@keyframes popIn{from{opacity:0;transform:scale(.9) translateY(14px)}to{opacity:1;transform:none}}
+.shot{animation:popIn .6s var(--ease) both;animation-delay:calc(var(--i,0) * 55ms)}
+.shot .lbl{transform:translateY(8px);opacity:.85;transition:transform .4s var(--ease),opacity .4s}
+.shot:hover .lbl{transform:none;opacity:1}
+@keyframes lbIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.lb:not([hidden]){animation:fadeLb .3s ease both}
+@keyframes fadeLb{from{opacity:0}to{opacity:1}}
+.lb img.swap{animation:lbIn .45s var(--ease) both}
+
+/* equipe */
+.member .ph{position:relative}
+.member .ph::after{content:"";position:absolute;inset:0;border:1px solid var(--gold);opacity:0;transform:scale(.94);transition:opacity .4s,transform .5s var(--ease);pointer-events:none}
+.member:hover .ph::after{opacity:1;transform:scale(1)}
+
+/* fatos */
+.fact b{font-variant-numeric:tabular-nums}
+
+/* whatsapp pulsando */
+.fab::before{content:"";position:absolute;inset:0;border-radius:inherit;background:#25D366;z-index:-1;animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.5);opacity:0}}
+.fab{isolation:isolate}
+.final .mark{animation:floaty 4s ease-in-out infinite}
 </style>
 
 </head>
@@ -252,6 +366,7 @@ footer a:hover{color:var(--gold)}
       <a href="#trabalhos">Trabalhos</a>
       <a href="#equipe">Equipe</a>
       <a href="#cursos">Cursos</a>
+      <a href="#avaliacoes">Avaliações</a>
       <a href="#visite">Visite</a>
     </nav>
     <a class="btn btn-gold" href="https://wa.me/5562993110132?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20Junior%20Dantas%20Sal%C3%A3o." target="_blank" rel="noopener"><svg><use href="#wa"/></svg><span>Agendar</span></a>
@@ -290,6 +405,8 @@ footer a:hover{color:var(--gold)}
     <span class="item"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>(62) 99311-0132</span>
   </div>
 </div>
+
+<div class="marquee" aria-hidden="true"><div class="track"><span>Loiros<svg><use href="#hex"/></svg><b>Iluminados</b><svg><use href="#hex"/></svg>Colorimetria<svg><use href="#hex"/></svg>Cortes<svg><use href="#hex"/></svg><b>Tratamentos</b><svg><use href="#hex"/></svg>Alinhamento<svg><use href="#hex"/></svg>Maquiagem<svg><use href="#hex"/></svg><b>Manicure</b><svg><use href="#hex"/></svg></span><span>Loiros<svg><use href="#hex"/></svg><b>Iluminados</b><svg><use href="#hex"/></svg>Colorimetria<svg><use href="#hex"/></svg>Cortes<svg><use href="#hex"/></svg><b>Tratamentos</b><svg><use href="#hex"/></svg>Alinhamento<svg><use href="#hex"/></svg>Maquiagem<svg><use href="#hex"/></svg><b>Manicure</b><svg><use href="#hex"/></svg></span></div></div>
 
 <section id="servicos">
   <div class="wrap">
@@ -425,6 +542,67 @@ footer a:hover{color:var(--gold)}
   </div>
 </section>
 
+<section id="avaliacoes" class="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Avaliações no Google</div><h2>O que dizem <em>nossas clientes</em></h2></div>
+      <div class="rev-sum">
+        <div class="big">5,0</div>
+        <div><div class="stars" aria-label="5 de 5 estrelas"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></div><small>Avaliações reais de clientes do salão</small></div>
+      </div>
+    </div>
+    <div class="rev-row">
+      <figure class="rev">
+        <div class="stars" aria-label="5 de 5 estrelas"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></div>
+        <blockquote>Maravilhosaaaaaaa!!! Atendimento nota 10! Equipe nota 10! Um destaque pra Jô, que sempre me atende de uma forma que eu simplesmente amoooo!!! Sandra também é uma fofa ❣️❣️❣️</blockquote>
+        <div class="rep"><b>Resposta do salão</b>Somos gratos pelo carinho. Volte sempre!</div>
+        <figcaption><span class="av">V</span><span><b>Valquiria</b><small>Avaliação no Google</small></span></figcaption>
+      </figure>
+      <figure class="rev">
+        <div class="stars" aria-label="5 de 5 estrelas"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></div>
+        <blockquote>Como sempre, estar no Junior Dantas Salão de Beleza é uma experiência que confirma o lema da empresa “Cuidar de si é a própria beleza”. Além do espaço físico cuidadosamente organizado e preparado, o atendimento de toda a equipe considera a individualidade de cada cliente. Recomendo!</blockquote>
+        
+        <figcaption><span class="av">DA</span><span><b>Dhenifer Aquino</b><small>Avaliação no Google</small></span></figcaption>
+      </figure>
+      <figure class="rev">
+        <div class="stars" aria-label="5 de 5 estrelas"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></div>
+        <blockquote>Excelente atendimento, ambiente acolhedor e profissionais extremamente competentes. Sempre saio satisfeita! Um dos melhores salões que já frequentei.</blockquote>
+        <div class="rep"><b>Resposta do salão</b>Obrigado pela preferência e parceria!</div>
+        <figcaption><span class="av">AF</span><span><b>Angela Ferreira</b><small>Avaliação no Google</small></span></figcaption>
+      </figure>
+      <figure class="rev">
+        <div class="stars" aria-label="5 de 5 estrelas"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></div>
+        <blockquote>Ótimo salão, todos atenciosos e prestativos, vou toda semana, muito bom o cuidado deles!</blockquote>
+        <div class="rep"><b>Resposta do salão</b>A equipe Junior Dantas alegra-se em tê-la como cliente! Obrigado pela atenção.</div>
+        <figcaption><span class="av">IS</span><span><b>Isabella Sales</b><small>Avaliação no Google</small></span></figcaption>
+      </figure>
+      <figure class="rev">
+        <div class="stars" aria-label="5 de 5 estrelas"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></div>
+        <blockquote>Experiência impecável, com profissionais maravilhosos que fazem tudo com dedicação e carinho. Recomendo demais!</blockquote>
+        <div class="rep"><b>Resposta do salão</b>Obrigado pelo reconhecimento e pela fidelidade como nossa cliente!</div>
+        <figcaption><span class="av">TB</span><span><b>Thalita Bitencourt</b><small>Avaliação no Google</small></span></figcaption>
+      </figure>
+      <figure class="rev">
+        <div class="stars" aria-label="5 de 5 estrelas"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg></div>
+        <blockquote>Ambiente aconchegante, ótimo atendimento de toda equipe, recomendo para quem busca qualidade e bom atendimento.</blockquote>
+        
+        <figcaption><span class="av">SR</span><span><b>Sthefany Rezende</b><small>Avaliação no Google</small></span></figcaption>
+      </figure>
+    </div>
+    <p class="swipe-hint">Arraste para ver mais avaliações →</p>
+    <div class="rev-cta">
+      <div>
+        <h3>Já foi atendida por nós?</h3>
+        <p>Sua avaliação ajuda outras mulheres a encontrarem o salão. Leva menos de um minuto.</p>
+      </div>
+      <div class="btns">
+        <a class="btn btn-gold" href="https://share.google/wWhAZYBKozx1gTuUJ" target="_blank" rel="noopener"><svg class="s" viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" fill="currentColor"/></svg>Avaliar no Google</a>
+        <a class="btn btn-line" href="https://share.google/wWhAZYBKozx1gTuUJ" target="_blank" rel="noopener">Ver todas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="visite">
   <div class="wrap">
     <div class="sec-head">
@@ -517,7 +695,7 @@ const PHOTOS=[
 const grid=document.getElementById('grid');let view=PHOTOS,idx=0;
 function render(f){
   view=f==='all'?PHOTOS:PHOTOS.filter(p=>p.c===f);
-  grid.innerHTML=view.map((p,i)=>`<button class="shot" data-i="${i}" aria-label="Ampliar foto: ${p.t}"><img src="${p.s}" alt="${p.t}" loading="lazy"><span class="lbl">${p.t}</span></button>`).join('');
+  grid.innerHTML=view.map((p,i)=>`<button class="shot" style="--i:${i}" data-i="${i}" aria-label="Ampliar foto: ${p.t}"><img src="${p.s}" alt="${p.t}" loading="lazy"><span class="lbl">${p.t}</span></button>`).join('');
 }
 render('all');
 document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
@@ -525,7 +703,7 @@ document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
   b.setAttribute('aria-pressed','true');render(b.dataset.f);
 }));
 const lb=document.getElementById('lb'),lbi=document.getElementById('lbi');
-function show(i){idx=(i+view.length)%view.length;lbi.src=view[idx].s;lbi.alt=view[idx].t}
+function show(i){idx=(i+view.length)%view.length;lbi.classList.remove('swap');void lbi.offsetWidth;lbi.src=view[idx].s;lbi.alt=view[idx].t;lbi.classList.add('swap')}
 grid.addEventListener('click',e=>{const s=e.target.closest('.shot');if(!s)return;show(+s.dataset.i);lb.hidden=false;document.body.style.overflow='hidden'});
 function close(){lb.hidden=true;document.body.style.overflow=''}
 document.getElementById('lbx').onclick=close;
@@ -558,6 +736,53 @@ document.addEventListener('touchmove',e=>{if(e.touches.length>1)e.preventDefault
 let lastTouch=0;document.addEventListener('touchend',e=>{const n=Date.now();if(n-lastTouch<300&&!e.target.closest('a,button'))e.preventDefault();lastTouch=n},{passive:false});
 document.addEventListener('wheel',e=>{if(e.ctrlKey)e.preventDefault()},{passive:false});
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','-','=','0'].includes(e.key))e.preventDefault()});
+
+/* ===== animações ===== */
+(function(){
+  const hdr=document.querySelector('header');
+  const onS=()=>hdr.classList.toggle('scrolled',scrollY>20);onS();addEventListener('scroll',onS,{passive:true});
+  if(!('IntersectionObserver' in window))return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const add=(sel,cls='rv',step=0)=>document.querySelectorAll(sel).forEach((el,i)=>{el.classList.add(...cls.split(' '));if(step)el.style.setProperty('--d',((i%8)*step)+'s')});
+  add('.sec-head>div');
+  add('.sec-head>.lead','rv',0);
+  add('.svc','rv',.08);
+  add('.chips');
+  add('.port-foot');
+  add('.about-pics img:nth-child(1)','rv rv-l');
+  add('.about-pics img:nth-child(2)','rv rv-r');
+  add('.about-copy>*','rv',.08);
+  add('.pillars>div','rv',.1);
+  add('.member .ph','wipe',.12);
+  add('.member>div:last-child','rv',.12);
+  add('.course-copy>*','rv',.08);
+  add('.course-pic','rv rv-r');
+  add('.card','rv',.12);
+  add('.rev','rv',.1);
+  add('.rev-cta','rv rv-s');
+  add('.rev-sum','rv');
+  add('.final .wrap>*','rv',.1);
+  add('.ribbon .wrap>*','rv',.08);
+  document.querySelectorAll('.sec-head>.lead').forEach(e=>e.style.setProperty('--d','.15s'));
+  document.documentElement.classList.add('js-anim');
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  /* fotos com cortina: observa o card pai (o próprio elemento está recortado) */
+  const wio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.wipe').forEach(w=>w.classList.add('in'));wio.unobserve(e.target)}}),{threshold:.15});
+  document.querySelectorAll('.wipe').forEach(el=>wio.observe(el.parentElement));
+  /* segurança: se algo não disparar, mostra tudo */
+  setTimeout(()=>document.querySelectorAll('.rv,.wipe').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add('in')}),2500);
+
+  /* contadores */
+  const facts=document.querySelectorAll('.fact b');
+  const fmt=[v=>v.toFixed(1).replace('.',',')+' mil',v=>Math.round(v)+'+',v=>String(Math.round(v))];
+  const tgt=[24.1,630,5];
+  const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);
+    const i=[...facts].indexOf(e.target),t0=performance.now(),dur=1800;
+    const tick=n=>{const p=Math.min(1,(n-t0)/dur),k=1-Math.pow(1-p,3);e.target.textContent=fmt[i](tgt[i]*k);if(p<1)requestAnimationFrame(tick)};
+    requestAnimationFrame(tick)}),{threshold:.6});
+  facts.forEach((f,i)=>{if(fmt[i])cio.observe(f)});
+})();
 </script>
 
 </body>
